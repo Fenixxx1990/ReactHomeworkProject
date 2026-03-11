@@ -12,7 +12,7 @@ function App() {
       <Header title="Поиск" />
       <Paragraph text="Введите название фильма, сериала или мультфильма для поиска и добавления в избранное." />
       <Input placeholder="Введите название" svg={true} />
-      <Button text="Поиск" />
+      <Button text="Поиск" onClick={() => console.log("Нажали")} />
     </>
   );
 }
