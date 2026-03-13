@@ -1,12 +1,12 @@
 import Card from "../Card/Card";
-import "./Body.css";
+import styles from "./Body.module.css";
 
 export default function Body({ items }) {
   if (items.length === 0) {
     return (
-      <div className="empty-body">
-        <h2 className="empty-body__h2">Упс... Ничего не найдено</h2>
-        <p className="empty-body__p">
+      <div className={styles["empty-body"]}>
+        <h2 className={styles["empty-body__h2"]}>Упс... Ничего не найдено</h2>
+        <p className={styles["empty-body__p"]}>
           Попробуйте изменить запрос или ввести более точное название фильма
         </p>
       </div>
@@ -14,7 +14,7 @@ export default function Body({ items }) {
   }
 
   return (
-    <div className="body">
+    <div className={styles["body"]}>
       {items.map((el) => (
         <Card
           key={el.id}

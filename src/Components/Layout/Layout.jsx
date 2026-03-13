@@ -1,10 +1,10 @@
-import "./Layout.css";
+import styles from "./Layout.module.css";
 
 export default function Layout() {
   return (
-    <div className="layout">
-      <img className="logo" src="/logo.svg" alt="Логотип" />
-      <ul className="menu">
+    <div className={styles["layout"]}>
+      <img className={styles["logo"]} src="/logo.svg" alt="Логотип" />
+      <ul className={styles["menu"]}>
         <li>
           <a href="#">Поиск фильмов</a>
         </li>
@@ -14,7 +14,7 @@ export default function Layout() {
         <li>
           <a href="#">Войти</a>
           <img
-            className="login-icon"
+            className={styles["login-icon"]}
             src="/login-icon.svg"
             alt="Иконка входа"
           />

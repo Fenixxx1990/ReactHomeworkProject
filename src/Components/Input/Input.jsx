@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Input.css";
+import styles from "./Input.module.css";
+import cn from "classnames";
 
 export default function Input({ placeholder, svg }) {
   const [inputData, setInputData] = useState("");
@@ -8,18 +9,17 @@ export default function Input({ placeholder, svg }) {
     setInputData(event.target.value);
   };
 
-  const classNameInput = "input" + (svg ? " input-with-icon" : "");
   return (
-    <div className="input-wrapper">
+    <div className={styles["input-wrapper"]}>
       {svg && (
         <img
-          className="search-icon"
+          className={styles["search-icon"]}
           src="/searchIcon.svg"
           alt="Иконка поиска"
         />
       )}
       <input
-        className={classNameInput}
+        className={cn(styles.input, { [styles["input-with-icon"]]: svg })}
         type="text"
         placeholder={placeholder}
         value={inputData}
