@@ -1,0 +1,32 @@
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input {
+  border: 1px solid #323b54;
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 384px;
+  height: 64px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 114%;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0 0 0 16px;
+}
+
+.input::placeholder {
+  color: #475069;
+}
+
+.input-with-icon {
+  padding-left: 56px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+}
