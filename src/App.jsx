@@ -5,6 +5,8 @@ import Input from "./Components/Input/Input";
 import Layout from "./Components/Layout/Layout";
 import Paragraph from "./Components/Paragraph/Paragraph";
 import Body from "./Components/Body/Body";
+import Form from "./Components/Form/Form";
+import { useState } from "react";
 
 const INITIAL_DATA = [
   {
@@ -58,16 +60,36 @@ const INITIAL_DATA = [
 ];
 
 function App() {
+  const [userInfo, setUserInfo] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      return JSON.parse(savedUser);
+    }
+    return null;
+  });
+
+  const login = (name) => {
+    const userData = { name, isLogined: true };
+    localStorage.setItem("user", JSON.stringify(userData));
+    setUserInfo(userData);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUserInfo(null);
+  };
+
   return (
     <>
-      <Layout />
+      <Layout userInfo={userInfo} onLogout={logout} />
       <Header title="Поиск" />
       <Paragraph text="Введите название фильма, сериала или мультфильма для поиска и добавления в избранное." />
       <div className="search">
-        <Input placeholder="Введите название" svg={true} />
+        <Input placeholder="Введите название" svg={true} id="search" />
         <Button text="Поиск" onClick={() => console.log("Нажали")} />
       </div>
       <Body items={INITIAL_DATA} />
+      <Form onLogin={login} />
     </>
   );
 }

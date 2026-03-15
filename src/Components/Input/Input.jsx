@@ -2,11 +2,25 @@ import { useState } from "react";
 import styles from "./Input.module.css";
 import cn from "classnames";
 
-export default function Input({ placeholder, svg }) {
-  const [inputData, setInputData] = useState("");
+export default function Input({
+  placeholder,
+  svg,
+  ref,
+  name,
+  id,
+  value,
+  onChange,
+}) {
+  const [localValue, setLocalValue] = useState("");
 
-  const inputChange = (event) => {
-    setInputData(event.target.value);
+  const displayValue = value !== undefined ? value : localValue;
+  const handleChange = (event) => {
+    if (onChange) {
+      onChange(event);
+    }
+    if (value === undefined) {
+      setLocalValue(event.target.value);
+    }
   };
 
   return (
@@ -19,11 +33,14 @@ export default function Input({ placeholder, svg }) {
         />
       )}
       <input
+        ref={ref}
+        name={name}
         className={cn(styles.input, { [styles["input-with-icon"]]: svg })}
         type="text"
+        id={id}
         placeholder={placeholder}
-        value={inputData}
-        onChange={inputChange}
+        value={displayValue}
+        onChange={handleChange}
       />
     </div>
   );
