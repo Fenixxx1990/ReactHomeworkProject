@@ -6,7 +6,7 @@ import Layout from "./Components/Layout/Layout";
 import Paragraph from "./Components/Paragraph/Paragraph";
 import Body from "./Components/Body/Body";
 import Form from "./Components/Form/Form";
-import { useState } from "react";
+import { UserContextProvider } from "./context/user.context.provider";
 
 const INITIAL_DATA = [
   {
@@ -60,28 +60,9 @@ const INITIAL_DATA = [
 ];
 
 function App() {
-  const [userInfo, setUserInfo] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      return JSON.parse(savedUser);
-    }
-    return null;
-  });
-
-  const login = (name) => {
-    const userData = { name, isLogined: true };
-    localStorage.setItem("user", JSON.stringify(userData));
-    setUserInfo(userData);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("user");
-    setUserInfo(null);
-  };
-
   return (
-    <>
-      <Layout userInfo={userInfo} onLogout={logout} />
+    <UserContextProvider>
+      <Layout />
       <Header title="Поиск" />
       <Paragraph text="Введите название фильма, сериала или мультфильма для поиска и добавления в избранное." />
       <div className="search">
@@ -89,8 +70,8 @@ function App() {
         <Button text="Поиск" onClick={() => console.log("Нажали")} />
       </div>
       <Body items={INITIAL_DATA} />
-      <Form onLogin={login} />
-    </>
+      <Form />
+    </UserContextProvider>
   );
 }
 

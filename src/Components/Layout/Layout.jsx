@@ -1,13 +1,38 @@
 import styles from "./Layout.module.css";
+import { useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
-export default function Layout({ userInfo, onLogout }) {
+export default function Layout() {
+  const { userData, setUserData } = useContext(UserContext);
+
+  const logout = () => {
+    let users = [];
+    try {
+      const savedUsers = localStorage.getItem("users");
+      if (savedUsers) {
+        users = JSON.parse(savedUsers);
+      }
+    } catch (error) {
+      console.error("Ошибка чтения из localStorage:", error);
+    }
+
+    // Устанавливаем isLogined: false для всех
+    const updatedUsers = users.map((user) => ({
+      ...user,
+      isLogined: false,
+    }));
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    setUserData(null);
+  };
+
   const onClick = (e) => {
     e.preventDefault();
-    onLogout();
+    logout();
   };
 
   let loginState;
-  if (!userInfo?.isLogined) {
+  if (!userData?.isLogined) {
     loginState = "";
     loginState = (
       <li className={styles["icon-li"]}>
@@ -23,7 +48,7 @@ export default function Layout({ userInfo, onLogout }) {
     loginState = (
       <>
         <li className={styles["icon-li"]}>
-          <a href="#">{userInfo.name}</a>
+          <a href="#">{userData.name}</a>
           <img
             className={styles["login-icon"]}
             src="/user-icon.png"
