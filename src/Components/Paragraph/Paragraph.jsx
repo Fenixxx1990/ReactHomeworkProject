@@ -1,9 +1,9 @@
-import "./Paragraph.css";
+import styles from "./Paragraph.module.css";
 
 export default function Paragraph({ text }) {
   return (
     <>
-      <p className="paragraph">{text}</p>
+      <p className={styles.paragraph}>{text}</p>
     </>
   );
 }
