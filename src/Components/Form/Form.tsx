@@ -1,16 +1,20 @@
 import styles from "./Form.module.css";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { useState } from "react";
+import { useState, type JSX } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/user.context";
+import type {
+  User,
+  UserContextType,
+} from "../../context/User.Context.Interface";
 
-export default function Form() {
-  const { _, setUserData } = useContext(UserContext);
+export default function Form(): JSX.Element {
+  const { setUserData } = useContext(UserContext) as UserContextType;
   const [value, setValue] = useState("");
 
-  const login = (name) => {
-    let users = [];
+  const login = (name: string) => {
+    let users: User[] = [];
     try {
       const savedUsers = localStorage.getItem("users");
       if (savedUsers) {
@@ -47,7 +51,7 @@ export default function Form() {
     setUserData(currentUser || null);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (value) {
       login(value);
@@ -55,7 +59,7 @@ export default function Form() {
     setValue("");
   };
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
 

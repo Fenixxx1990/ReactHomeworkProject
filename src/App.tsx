@@ -7,8 +7,9 @@ import Paragraph from "./Components/Paragraph/Paragraph";
 import Body from "./Components/Body/Body";
 import Form from "./Components/Form/Form";
 import { UserContextProvider } from "./context/user.context.provider";
+import type { IInitialData } from "./Interfaces/Interfaces";
 
-const INITIAL_DATA = [
+const INITIAL_DATA: IInitialData[] = [
   {
     id: 1,
     src: "../public/pictures/black-widow.png",

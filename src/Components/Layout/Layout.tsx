@@ -1,12 +1,13 @@
 import styles from "./Layout.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/user.context";
+import type { User } from "../../context/User.Context.Interface";
 
 export default function Layout() {
   const { userData, setUserData } = useContext(UserContext);
 
   const logout = () => {
-    let users = [];
+    let users: User[] = [];
     try {
       const savedUsers = localStorage.getItem("users");
       if (savedUsers) {
@@ -26,7 +27,7 @@ export default function Layout() {
     setUserData(null);
   };
 
-  const onClick = (e) => {
+  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     logout();
   };
