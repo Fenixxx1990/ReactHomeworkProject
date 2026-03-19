@@ -1,7 +1,8 @@
 import styles from "./Layout.module.css";
 import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
-import type { User } from "../../context/User.Context.Interface";
+import { UserContext } from "../context/user.context";
+import type { User } from "../context/User.Context.Interface";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
   const { userData, setUserData } = useContext(UserContext);
@@ -37,7 +38,7 @@ export default function Layout() {
     loginState = "";
     loginState = (
       <li className={styles["icon-li"]}>
-        <a href="#">Войти</a>
+        <Link to={"/login"}>Войти</Link>
         <img
           className={styles["login-icon"]}
           src="/login-icon.svg"
@@ -65,17 +66,22 @@ export default function Layout() {
     );
   }
   return (
-    <div className={styles["layout"]}>
-      <img className={styles["logo"]} src="/logo.svg" alt="Логотип" />
-      <ul className={styles["menu"]}>
-        <li>
-          <a href="#">Поиск фильмов</a>
-        </li>
-        <li>
-          <a href="#">Мои фильмы</a>
-        </li>
-        {loginState}
-      </ul>
+    <div>
+      <div className={styles["layout"]}>
+        <img className={styles["logo"]} src="/logo.svg" alt="Логотип" />
+        <ul className={styles["menu"]}>
+          <li>
+            <Link to={"/"}>Поиск фильмов</Link>
+          </li>
+          <li>
+            <Link to={"/favorites"}>Мои фильмы</Link>
+          </li>
+          {loginState}
+        </ul>
+      </div>
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 }

@@ -1,13 +1,8 @@
-import "./App.css";
-import Button from "./Components/Button/Button";
-import Header from "./Components/Header/Header";
-import Input from "./Components/Input/Input";
-import Layout from "./Layout/Layout";
-import Paragraph from "./Components/Paragraph/Paragraph";
-import Body from "./Components/Body/Body";
-import Form from "./Components/Form/Form";
-import { UserContextProvider } from "./context/user.context.provider";
-import type { IInitialData } from "./Interfaces/Interfaces";
+import Body from "../../Components/Body/Body";
+import Header from "../../Components/Header/Header";
+import Paragraph from "../../Components/Paragraph/Paragraph";
+import Search from "../../Components/Search/Search";
+import type { IInitialData } from "../../Interfaces/Interfaces";
 
 const INITIAL_DATA: IInitialData[] = [
   {
@@ -60,20 +55,13 @@ const INITIAL_DATA: IInitialData[] = [
   },
 ];
 
-function App() {
+export function Main() {
   return (
-    <UserContextProvider>
-      <Layout />
+    <>
       <Header title="Поиск" />
       <Paragraph text="Введите название фильма, сериала или мультфильма для поиска и добавления в избранное." />
-      <div className="search">
-        <Input placeholder="Введите название" svg={true} id="search" />
-        <Button text="Поиск" onClick={() => console.log("Нажали")} />
-      </div>
+      <Search />
       <Body items={INITIAL_DATA} />
-      <Form />
-    </UserContextProvider>
+    </>
   );
 }
-
-export default App;
