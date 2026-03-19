@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Input.module.css";
 import cn from "classnames";
+import type { InputProps } from "./Input.props";
 
 export default function Input({
   placeholder,
@@ -10,11 +11,11 @@ export default function Input({
   id,
   value,
   onChange,
-}) {
+}: InputProps) {
   const [localValue, setLocalValue] = useState("");
 
   const displayValue = value !== undefined ? value : localValue;
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event);
     }

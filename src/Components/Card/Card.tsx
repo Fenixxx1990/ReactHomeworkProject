@@ -1,7 +1,8 @@
 import styles from "./Card.module.css";
 import cn from "classnames";
+import type { CardProps } from "./Card.props";
 
-export default function Card({ src, filmName, inFavorites }) {
+export default function Card({ src, filmName, inFavorites }: CardProps) {
   let favorite;
   if (inFavorites) {
     favorite = (

@@ -1,7 +1,8 @@
 import Card from "../Card/Card";
 import styles from "./Body.module.css";
+import type { BodyProps } from "./Body.props";
 
-export default function Body({ items }) {
+export default function Body({ items }: BodyProps) {
   if (items.length === 0) {
     return (
       <div className={styles["empty-body"]}>

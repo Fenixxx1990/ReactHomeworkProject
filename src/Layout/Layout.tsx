@@ -1,12 +1,15 @@
 import styles from "./Layout.module.css";
 import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
+import { UserContext } from "../context/user.context";
+import type { User } from "../context/User.Context.Interface";
+import { NavLink, Outlet } from "react-router-dom";
+import cn from "classnames";
 
 export default function Layout() {
   const { userData, setUserData } = useContext(UserContext);
 
   const logout = () => {
-    let users = [];
+    let users: User[] = [];
     try {
       const savedUsers = localStorage.getItem("users");
       if (savedUsers) {
@@ -26,7 +29,7 @@ export default function Layout() {
     setUserData(null);
   };
 
-  const onClick = (e) => {
+  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     logout();
   };
@@ -36,7 +39,16 @@ export default function Layout() {
     loginState = "";
     loginState = (
       <li className={styles["icon-li"]}>
-        <a href="#">Войти</a>
+        <NavLink
+          className={({ isActive }) =>
+            cn({
+              [styles.active]: isActive,
+            })
+          }
+          to={"/login"}
+        >
+          Войти
+        </NavLink>
         <img
           className={styles["login-icon"]}
           src="/login-icon.svg"
@@ -64,17 +76,40 @@ export default function Layout() {
     );
   }
   return (
-    <div className={styles["layout"]}>
-      <img className={styles["logo"]} src="/logo.svg" alt="Логотип" />
-      <ul className={styles["menu"]}>
-        <li>
-          <a href="#">Поиск фильмов</a>
-        </li>
-        <li>
-          <a href="#">Мои фильмы</a>
-        </li>
-        {loginState}
-      </ul>
+    <div>
+      <div className={styles["layout"]}>
+        <img className={styles["logo"]} src="/logo.svg" alt="Логотип" />
+        <ul className={styles["menu"]}>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                cn({
+                  [styles.active]: isActive,
+                })
+              }
+              to={"/"}
+            >
+              Поиск фильмов
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                cn({
+                  [styles.active]: isActive,
+                })
+              }
+              to={"/favorites"}
+            >
+              Мои фильмы
+            </NavLink>
+          </li>
+          {loginState}
+        </ul>
+      </div>
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 }
