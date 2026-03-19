@@ -2,7 +2,8 @@ import styles from "./Layout.module.css";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 import type { User } from "../context/User.Context.Interface";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+import cn from "classnames";
 
 export default function Layout() {
   const { userData, setUserData } = useContext(UserContext);
@@ -38,7 +39,16 @@ export default function Layout() {
     loginState = "";
     loginState = (
       <li className={styles["icon-li"]}>
-        <Link to={"/login"}>Войти</Link>
+        <NavLink
+          className={({ isActive }) =>
+            cn({
+              [styles.active]: isActive,
+            })
+          }
+          to={"/login"}
+        >
+          Войти
+        </NavLink>
         <img
           className={styles["login-icon"]}
           src="/login-icon.svg"
@@ -71,10 +81,28 @@ export default function Layout() {
         <img className={styles["logo"]} src="/logo.svg" alt="Логотип" />
         <ul className={styles["menu"]}>
           <li>
-            <Link to={"/"}>Поиск фильмов</Link>
+            <NavLink
+              className={({ isActive }) =>
+                cn({
+                  [styles.active]: isActive,
+                })
+              }
+              to={"/"}
+            >
+              Поиск фильмов
+            </NavLink>
           </li>
           <li>
-            <Link to={"/favorites"}>Мои фильмы</Link>
+            <NavLink
+              className={({ isActive }) =>
+                cn({
+                  [styles.active]: isActive,
+                })
+              }
+              to={"/favorites"}
+            >
+              Мои фильмы
+            </NavLink>
           </li>
           {loginState}
         </ul>

@@ -7,7 +7,7 @@ import type { IInitialData } from "../../Interfaces/Interfaces";
 const INITIAL_DATA: IInitialData[] = [
   {
     id: 1,
-    src: "../public/pictures/black-widow.png",
+    src: "/public/pictures/black-widow.png",
     title: "Black Widow",
     inFavorite: false,
   },
