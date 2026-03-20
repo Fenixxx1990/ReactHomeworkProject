@@ -2,7 +2,12 @@ import styles from "./Card.module.css";
 import cn from "classnames";
 import type { CardProps } from "./Card.props";
 
-export default function Card({ src, filmName, inFavorites }: CardProps) {
+export default function Card({
+  src,
+  filmName,
+  inFavorites,
+  rating,
+}: CardProps) {
   let favorite;
   if (inFavorites) {
     favorite = (
@@ -21,11 +26,12 @@ export default function Card({ src, filmName, inFavorites }: CardProps) {
   }
   return (
     <div className={styles["card"]}>
-      <img
-        className={styles["card__image"]}
-        src={src}
-        alt={"изображение" + filmName}
-      />
+      <div className={styles.image} style={{ backgroundImage: `url(${src})` }}>
+        <div className={styles.rating}>
+          <img src="/star.svg" alt="" />
+          {rating}
+        </div>
+      </div>
       <h3 className={styles["card__title"]}>{filmName}</h3>
       {favorite}
     </div>

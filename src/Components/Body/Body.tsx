@@ -21,6 +21,7 @@ export default function Body({ items }: BodyProps) {
           key={el.id}
           src={el.src}
           filmName={el.title}
+          rating={el.rating}
           inFavorites={el.inFavorite}
         />
       ))}

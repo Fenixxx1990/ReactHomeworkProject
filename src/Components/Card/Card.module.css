@@ -12,6 +12,42 @@
   gap: 16px;
 }
 
+.image {
+  position: relative;
+  width: 266px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+}
+
+.rating {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  border-radius: 8px;
+  padding: 4px 8px;
+  width: 65px;
+  height: 32px;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.65);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #ffad49;
+  display: flex;
+  gap: 4px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating img {
+  width: 16px;
+  height: 16px;
+  margin-top: -2px;
+}
+
 .card__image {
   align-self: center;
   margin: 0;
