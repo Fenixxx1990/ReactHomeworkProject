@@ -14,14 +14,14 @@ export default function Card({
   if (inFavorites) {
     favorite = (
       <p className={cn(styles["card__favorite"], styles["favorite-in"])}>
-        <img src="../public/bookmark-green.svg" alt="иконка в избранном" />В
+        <img src="/public/bookmark-green.svg" alt="иконка в избранном" />В
         избранном
       </p>
     );
   } else {
     favorite = (
       <p className={styles["card__favorite"]}>
-        <img src="../public/like.svg" alt="иконка добавить в избранное" />В
+        <img src="/public/like.svg" alt="иконка добавить в избранное" />В
         избранноe
       </p>
     );

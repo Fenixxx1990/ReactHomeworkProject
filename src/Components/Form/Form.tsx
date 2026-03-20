@@ -8,8 +8,10 @@ import type {
   User,
   UserContextType,
 } from "../../context/User.Context.Interface";
+import { useNavigate } from "react-router-dom";
 
 export default function Form(): JSX.Element {
+  const navigate = useNavigate();
   const { setUserData } = useContext(UserContext) as UserContextType;
   const [value, setValue] = useState("");
 
@@ -49,6 +51,7 @@ export default function Form(): JSX.Element {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     const currentUser = updatedUsers.find((user) => user.isLogined);
     setUserData(currentUser || null);
+    navigate("/");
   };
 
   const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>): void => {

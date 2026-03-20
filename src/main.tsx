@@ -11,19 +11,20 @@ import { Error } from "./Pages/Error/Error";
 import { UserContextProvider } from "./context/user.context.provider";
 import axios from "axios";
 import { url } from "./Helpers/API";
+import { RequireAuth } from "./Helpers/RequireAuth";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <RequireAuth>
+        <Layout />
+      </RequireAuth>
+    ),
     children: [
       {
         path: "/",
         element: <Main />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
       {
         path: "/movie/:id",
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         element: <Favorites />,
       },
     ],
+  },
+  {
+    path: "/auth/login",
+    element: <Login />,
   },
   {
     path: "*",

@@ -1,6 +1,6 @@
 export interface CardProps {
   src: string;
-  id: number;
+  id: string;
   filmName: string;
   inFavorites: boolean;
   rating: number;
