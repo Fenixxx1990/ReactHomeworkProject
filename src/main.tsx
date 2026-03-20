@@ -9,6 +9,8 @@ import { Main } from "./Pages/Main/Main";
 import { Movie } from "./Pages/Movie/Movie";
 import { Error } from "./Pages/Error/Error";
 import { UserContextProvider } from "./context/user.context.provider";
+import axios from "axios";
+import { url } from "./Helpers/API";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/movie/:id",
         element: <Movie />,
+        loader: async ({ params }) => {
+          return await axios
+            .get(`${url}i=${params.id}`)
+            .then((res) => res.data);
+        },
       },
       {
         path: "/favorites",

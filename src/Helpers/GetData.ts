@@ -1,20 +1,24 @@
 import axios, { AxiosError } from "axios";
 import { url } from "./API";
-import { type Description, type IInitialData } from "../Interfaces/Interfaces";
+import { type IInitialData, type Search } from "../Interfaces/Interfaces";
 
-export const getFilms = async () => {
+export const getFilms = async (searchTxt: string) => {
   try {
-    const { data } = await axios.get(`${url}search?q=Marry`);
-    console.log(data.docs);
-    const result: IInitialData[] = data.description.map(
-      (film: Description) => ({
-        title: film["#TITLE"],
-        src: film["#IMG_POSTER"],
-        id: film["#IMDB_ID"].slice(2),
-        rating: film["#RANK"],
-        inFavorite: false,
-      }),
-    );
+    const { data } = await axios.get(`${url}S=${searchTxt}`);
+    const seenIds = new Set<string>();
+    const result: IInitialData[] = data.Search.map((film: Search) => ({
+      title: film.Title,
+      src: film?.Poster,
+      id: film.imdbID,
+      rating: film.Year,
+      inFavorite: false,
+    })).filter((film: IInitialData) => {
+      if (seenIds.has(film.id)) {
+        return false;
+      }
+      seenIds.add(film.id);
+      return true;
+    });
     console.log(result);
     return result;
   } catch (e) {

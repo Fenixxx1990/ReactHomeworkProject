@@ -3,6 +3,17 @@ import styles from "./Body.module.css";
 import type { BodyProps } from "./Body.props";
 
 export default function Body({ items }: BodyProps) {
+  if (items === null) {
+    return (
+      <div className={styles["empty-body"]}>
+        <h2 className={styles["empty-body__h2"]}>Тут пока ещё ничего нет</h2>
+        <p className={styles["empty-body__p"]}>
+          Введите свой запрос и узнайте какие фильмы у нас есть
+        </p>
+      </div>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <div className={styles["empty-body"]}>
@@ -18,6 +29,7 @@ export default function Body({ items }: BodyProps) {
     <div className={styles["body"]}>
       {items.map((el) => (
         <Card
+          id={el.id}
           key={el.id}
           src={el.src}
           filmName={el.title}

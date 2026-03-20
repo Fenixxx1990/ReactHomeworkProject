@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import type { IFullFilmParams } from "../../Interfaces/Interfaces";
 
 export function Movie() {
-  const { id } = useParams();
-
-  return <>Movie-{id}</>;
+  const data = useLoaderData() as IFullFilmParams;
+  return <>Movie-{data.Title}</>;
 }
