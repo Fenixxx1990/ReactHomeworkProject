@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice, { USER_PERSISTENT_STATE } from "./user.slice";
 import { saveUserState } from "./storage";
+import searchSlice from "./search.slice";
 
 export const store = configureStore({
   reducer: {
     user: userSlice,
+    search: searchSlice,
   },
 });
 

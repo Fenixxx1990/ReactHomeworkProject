@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../store/store";
 import { userActions } from "../store/user.slice";
+import { searchActions } from "../store/search.slice";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export default function Layout() {
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     dispatch(userActions.logout());
+    dispatch(searchActions.clearItems());
     navigate("/auth/login");
   };
 

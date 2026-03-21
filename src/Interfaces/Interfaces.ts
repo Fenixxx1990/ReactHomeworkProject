@@ -1,6 +1,6 @@
 export interface IInitialData {
   id: string;
-  src?: string;
+  src: string;
   title: string;
   rating: number;
   inFavorite: boolean;
