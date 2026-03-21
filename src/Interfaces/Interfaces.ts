@@ -41,6 +41,7 @@ export interface IFullFilmParams {
   Type: string;
   totalSeasons: string;
   Response: string;
+  BoxOffice: string;
 }
 
 export interface Rating {

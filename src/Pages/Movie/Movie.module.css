@@ -1,0 +1,148 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  backdrop-filter: blur(24px);
+  background: rgba(32, 40, 62, 0.8);
+  border-radius: 24px;
+  padding: 40px;
+  width: 93%;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.paragraph {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: #beb7fb;
+  margin: 0;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  color: #ebeef5;
+  margin: 0;
+}
+
+.body {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 80px;
+}
+
+.image {
+  width: 480px;
+}
+
+.image img {
+  width: 480px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.block {
+  position: relative;
+}
+
+.plot {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 160%;
+  color: #8e95a9;
+}
+
+.rating {
+  border-radius: 8px;
+  padding: 4px 8px;
+  width: 59px;
+  height: 32px;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.65);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #ffad49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.rating img {
+  width: 16px;
+  height: 16px;
+  margin-top: -2px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #767e94;
+}
+
+.info h3 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 160%;
+  color: #c3c8d4;
+}
+
+.footparagr {
+  align-self: flex-start;
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #767e94;
+  padding: 14px;
+}
+
+.footer {
+  align-self: flex-start;
+  backdrop-filter: blur(24px);
+  background: rgba(32, 40, 62, 0.8);
+  border-radius: 24px;
+  padding: 40px;
+  width: 93%;
+}
+
+.footer h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 160%;
+  color: #c3c8d4;
+}
+
+.foottext {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 160%;
+  color: #8e95a9;
+}
