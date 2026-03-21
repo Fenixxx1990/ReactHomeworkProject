@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { type AppDispatch } from "../../store/store";
 import { userActions } from "../../store/user.slice";
 import { useState, type JSX } from "react";
+import { favoritesActions } from "../../store/favorites.slice";
 
 export type LoginForm = {
   name: {
@@ -23,8 +24,8 @@ export default function Form(): JSX.Element {
     if (!value) {
       return;
     }
-    console.log(value);
     dispatch(userActions.login({ name: value, isLogined: true }));
+    dispatch(favoritesActions.reloadFavorites());
     navigate("/");
   };
 

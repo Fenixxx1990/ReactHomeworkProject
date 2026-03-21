@@ -67,6 +67,8 @@
 }
 
 .card__favorite {
+  background: none;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,8 +82,16 @@
   cursor: pointer;
 }
 
+.card__favorite:hover {
+  color: #564bbd;
+}
+
 .favorite-in {
   color: #37d8a7;
+}
+
+.favorite-in:hover {
+  color: #27a77e;
 }
 
 .link {

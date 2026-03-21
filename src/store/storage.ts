@@ -1,4 +1,7 @@
-import { type IUserPersistentState } from "./user.slice";
+import type { IFavoritesState } from "./favorites.slice";
+import { USER_PERSISTENT_STATE, type IUserPersistentState } from "./user.slice";
+
+export const FAVORITES_PERSISTENT_STATE = "favorites";
 
 export function loadState<T>(key: string): T | undefined {
   try {
@@ -44,4 +47,40 @@ export function saveUserState(state: IUserPersistentState, key: string) {
   });
 
   localStorage.setItem(key, JSON.stringify(existingUsers));
+}
+
+// loadFavorites теперь полностью автономна
+export const loadFavorites = (key: string): IFavoritesState => {
+  const userName = loadUserState(USER_PERSISTENT_STATE)?.name;
+
+  if (!userName) {
+    console.warn("No authenticated user, returning empty favorites state");
+    return {};
+  }
+
+  const allFavorites = loadState<IFavoritesState>(key) ?? {};
+
+  if (!(userName in allFavorites)) {
+    return { [userName]: { items: [] } };
+  }
+
+  return { [userName]: allFavorites[userName] };
+};
+
+export function saveFavoritesState(favoritesState: IFavoritesState) {
+  const existingFavorites =
+    loadState<IFavoritesState>(FAVORITES_PERSISTENT_STATE) ?? {};
+  const userName = Object.keys(favoritesState)[0];
+
+  if (!userName) {
+    console.warn("No user in favorites state, cannot save");
+    return;
+  }
+
+  const updatedFavorites = {
+    ...existingFavorites,
+    [userName]: favoritesState[userName],
+  };
+
+  saveState(updatedFavorites, FAVORITES_PERSISTENT_STATE);
 }

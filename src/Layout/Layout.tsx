@@ -11,6 +11,7 @@ export default function Layout() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { isLogined, name } = useSelector((s: RootState) => s.user);
+  const favorites = useSelector((s: RootState) => s.favorites);
 
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -77,7 +78,7 @@ export default function Layout() {
               Поиск фильмов
             </NavLink>
           </li>
-          <li>
+          <li className={styles.myfilm}>
             <NavLink
               className={({ isActive }) =>
                 cn({
@@ -88,6 +89,9 @@ export default function Layout() {
             >
               Мои фильмы
             </NavLink>
+            <div className={styles.counter}>
+              {favorites[name ?? ""].items.length}
+            </div>
           </li>
           {loginState}
         </ul>

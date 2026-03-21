@@ -19,7 +19,6 @@ export const getFilms = async (searchTxt: string) => {
       seenIds.add(film.id);
       return true;
     });
-    console.log(result);
     return result;
   } catch (e) {
     console.error(e);
