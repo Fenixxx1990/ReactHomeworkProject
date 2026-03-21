@@ -10,7 +10,7 @@ export function Favorites() {
   return (
     <>
       <Header title="Избранное" />
-      <Body items={favorite[name ?? ""].items} />
+      <Body items={favorite[name ?? ""]?.items ?? []} />
     </>
   );
 }

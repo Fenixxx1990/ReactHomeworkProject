@@ -90,7 +90,7 @@ export default function Layout() {
               Мои фильмы
             </NavLink>
             <div className={styles.counter}>
-              {favorites[name ?? ""].items.length}
+              {favorites[name ?? ""]?.items.length ?? 0}
             </div>
           </li>
           {loginState}
