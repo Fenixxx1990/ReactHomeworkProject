@@ -11,6 +11,7 @@ export default function Input({
   id,
   value,
   onChange,
+  onKeyDown,
 }: InputProps) {
   const [localValue, setLocalValue] = useState("");
 
@@ -39,6 +40,7 @@ export default function Input({
         className={cn(styles.input, { [styles["input-with-icon"]]: svg })}
         type="text"
         id={id}
+        onKeyDown={onKeyDown}
         placeholder={placeholder}
         value={displayValue}
         onChange={handleChange}

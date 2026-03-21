@@ -4,8 +4,11 @@ import { UserContext } from "../context/user.context";
 import type { User } from "../context/User.Context.Interface";
 import { NavLink, Outlet } from "react-router-dom";
 import cn from "classnames";
+import { useNavigate } from "react-router-dom";
 
 export default function Layout() {
+  const navigate = useNavigate();
+
   const { userData, setUserData } = useContext(UserContext);
 
   const logout = () => {
@@ -32,6 +35,7 @@ export default function Layout() {
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     logout();
+    navigate("/auth/login");
   };
 
   let loginState;

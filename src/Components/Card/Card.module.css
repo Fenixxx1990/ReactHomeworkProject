@@ -83,3 +83,8 @@
 .favorite-in {
   color: #37d8a7;
 }
+
+.link {
+  width: 300px;
+  cursor: pointer;
+}
