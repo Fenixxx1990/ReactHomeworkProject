@@ -1,6 +1,6 @@
 export interface IInitialData {
   id: string;
-  src?: string;
+  src: string;
   title: string;
   rating: number;
   inFavorite: boolean;
@@ -41,6 +41,7 @@ export interface IFullFilmParams {
   Type: string;
   totalSeasons: string;
   Response: string;
+  BoxOffice: string;
 }
 
 export interface Rating {

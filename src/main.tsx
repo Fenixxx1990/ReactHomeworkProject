@@ -8,10 +8,11 @@ import { Login } from "./Pages/Login/Login";
 import { Main } from "./Pages/Main/Main";
 import { Movie } from "./Pages/Movie/Movie";
 import { Error } from "./Pages/Error/Error";
-import { UserContextProvider } from "./context/user.context.provider";
 import axios from "axios";
 import { url } from "./Helpers/API";
 import { RequireAuth } from "./Helpers/RequireAuth";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const router = createBrowserRouter([
   {
@@ -53,8 +54,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <UserContextProvider>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </UserContextProvider>
+    </Provider>
   </StrictMode>,
 );

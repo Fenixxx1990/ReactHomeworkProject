@@ -2,6 +2,10 @@
   font-family: "Poppins", sans-serif;
   background: #121829;
   padding: 0 120px;
+  height: 144px;
+  width: 1050px;
+  align-items: center;
+  justify-self: center;
 }
 
 a {
